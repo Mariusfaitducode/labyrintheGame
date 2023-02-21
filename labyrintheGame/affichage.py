@@ -1,4 +1,5 @@
 # import time
+import time
 
 from constante import *
 
@@ -23,6 +24,23 @@ def draw_grid(cnv, grid):
                 cnv.create_rectangle(x1, y1, x2, y2, fill='#'+color, width=0)
 
 
+def draw_final_grid(cnv, grid):
+
+    for l in range(NB_LINE):
+        for c in range(NB_COLUMN):
+
+            x1 = c * COTE_CASE
+            y1 = l * COTE_CASE
+            x2 = x1 + COTE_CASE
+            y2 = y1 + COTE_CASE
+
+            if grid[l][c] == -1:
+                cnv.create_rectangle(x1, y1, x2, y2, fill='black', width=0)
+            else:
+                cnv.create_rectangle(x1, y1, x2, y2, fill='white', width=0)
+
+
+
 def draw_case(cnv, grid, l, c):
 
     x1 = c * COTE_CASE
@@ -45,9 +63,10 @@ def draw_visited_case(cnv, l, c):
 
     cnv.create_rectangle(x1, y1, x2, y2, fill='yellow', width=0)
     cnv.update()
+    # time.sleep(0.0001)
 
 
-def draw_passing_case(cnv, l, c, couleur):
+def draw_colour_case(cnv, l, c, couleur):
 
     x1 = c * COTE_CASE
     y1 = l * COTE_CASE

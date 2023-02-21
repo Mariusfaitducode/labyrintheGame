@@ -98,7 +98,6 @@ def generate_lab(grid, cnv):
     # print(str(final_value) + "-->" + str(count_list[final_value]))
 
 
-
 def compare_val(count_list, val1, val2):
 
     if count_list[val1] > count_list[val2]:

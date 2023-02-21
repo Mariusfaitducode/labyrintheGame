@@ -4,10 +4,6 @@ import math
 from affichage import *
 
 
-VISITED = 1
-TO_VISIT = 0
-
-
 def parcours_A_star(grid, cnv):
 
     possibility_list = []
@@ -64,7 +60,7 @@ def parcours_A_star(grid, cnv):
     for row in count_grid:
         print('| '.join([str(elem) for elem in row]))
 
-    draw_passing_case(cnv, l, c, 'red')
+    draw_colour_case(cnv, l, c, 'red')
     print(count_grid[l][c])
     count -= 1
 
@@ -81,7 +77,7 @@ def parcours_A_star(grid, cnv):
                     l = l + i
 
                     print(count_grid[l][c])
-                    draw_passing_case(cnv, l, c, 'red')
+                    draw_colour_case(cnv, l, c, 'red')
                     break
 
             if count_grid[l][c + i] != WALL:
@@ -90,7 +86,7 @@ def parcours_A_star(grid, cnv):
                     c = c + i
 
                     print(count_grid[l][c])
-                    draw_passing_case(cnv, l, c, 'red')
+                    draw_colour_case(cnv, l, c, 'red')
                     break
     print("end of path")
 

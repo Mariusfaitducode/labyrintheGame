@@ -1,11 +1,11 @@
+import random
 
-
-TAB_GAP = 50
+TAB_GAP = 30
 
 COTE_CASE = 12
 
-NB_LINE = 65
-NB_COLUMN = 101
+NB_LINE = 61
+NB_COLUMN = 61
 
 LINE_WIDTH = 2
 
@@ -16,3 +16,5 @@ DEPART = (0, 1)
 ARRIVE = (NB_LINE - 1, NB_COLUMN - 2)
 
 WALL = -1
+VISITED = random.randint(0,1000)
+TO_VISIT = 0

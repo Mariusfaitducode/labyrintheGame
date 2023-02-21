@@ -1,0 +1,62 @@
+
+
+#Affichage tab 2 dim
+
+for row in color:
+    print(''.join([str(elem) for elem in row]))
+
+
+#Comparaison nbre de type case colonne
+
+                if count_val(grid, l, c+1) > count_val(grid, l, c - 1):
+
+                    grid[l][c] = grid[l][c - 1] = grid[l][c + 1]
+                else:
+                    grid[l][c] = grid[l][c + 1] = grid[l][c - 1]
+
+
+#Comparaison nbre de type case ligne
+
+                if count_val(grid, l + 1, c) > count_val(grid, l - 1, c):
+
+                    grid[l][c] = grid[l - 1][c] = grid[l + 1][c]
+                else:
+                    grid[l][c] = grid[l + 1][c] = grid[l + 1][c]
+
+
+#Resolution labyrinthe par récursion
+
+def parcours_A_star_Recursivly(explo_grid, actual_case, possibility_list, count, cnv):
+
+    (l, c) = actual_case
+
+    explo_grid[l][c] = VISITED
+    draw_visited_case(cnv, l, c)
+
+    count += 1
+
+    if (l, c) == ARRIVE:
+        print("finish")
+
+    else:
+        for i in range(-1, 2, 2):
+
+            if explo_grid[l + i][c] == TO_VISIT:
+
+                poids = count + norme_vect((l + i, c), ARRIVE)
+
+                possibility_list.append(((l + i, c), poids))
+
+            if explo_grid[l][c + i] == TO_VISIT:
+
+                poids = count + norme_vect((l, c + i), ARRIVE)
+
+                possibility_list.append(((l, c + i), poids))
+
+        (l, c) = choose_case(possibility_list, cnv)
+        # for row in explo_grid:
+        # print(''.join([str(elem) for elem in row]))
+
+        print(count)
+
+        parcours_A_star_Recursivly(explo_grid, (l, c), possibility_list, count, cnv)
